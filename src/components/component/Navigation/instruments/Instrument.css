@@ -1,0 +1,48 @@
+/* Instrument.css */
+
+/* Container styling */
+.instruments-container {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Input field styling */
+.user-input {
+  width: 390px;
+  outline: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.generate-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  background-color: #0056b3;
+}
+.qr-code-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.qr-code-img {
+  max-width: 200px;
+  height: auto;
+}

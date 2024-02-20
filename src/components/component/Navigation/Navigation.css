@@ -1,0 +1,81 @@
+.agenst_wrapper_nav {
+width: 400px;
+height: 16.7%;
+background-color: #FFEC23;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.navigate_wrapper > ul > li > a {
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 5%;
+}
+
+.navigate_wrapper > ul > li > a > span {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+
+.images_navitag{
+    width: 80px;
+    height: 80px;
+}
+
+
+
+.frilans_wrapper_nav {
+width: 400px;
+height: 16.7%;
+background-color: #2CC6CA;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.znaniya_wrapper_nav {
+width: 400px;
+height: 16.7%;
+background-color: #027412;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.vakansiya_wrapper_nav {
+width: 400px;
+height: 16.7%;
+background-color: #0176D6;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.instruments_wrapper_nav {
+width: 400px;
+height: 16.7%;
+background-color: #F35B06;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.uslugi_wrapper_nav {
+    width: 400px;
+    height: 16.7%;
+    background-color: #8C00C9;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigate_wrapper > ul {
+    height: 100vh;
+}
