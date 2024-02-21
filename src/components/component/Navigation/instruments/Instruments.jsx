@@ -1,41 +1,22 @@
 import React, { useState } from 'react';
-import QRCode from 'qrcode';
 import './Instrument.css'; // Import CSS file
 
 const Instruments = () => {
-  const [userData, setUserData] = useState('');
-  const [qrCodeURL, setQRCodeURL] = useState('');
-  const [error, setError] = useState('');
-
-  const generateQRCode = async (data) => {
-    try {
-      if (!data) {
-        setError('Error: No input text');
-        return;
-      }
-
-      const qrCodeDataURL = await QRCode.toDataURL(data);
-      setQRCodeURL(qrCodeDataURL);
-    } catch (error) {
-      console.error('Error occurred:', error);
-      setError('Error occurred: ' + error.message);
-    }
-  }
+  const [values, setValues] = useState('');
+  const [qrCodeSrc, setQRCodeSrc] = useState('');
 
   const handleInputChange = (event) => {
-    setUserData(event.target.value);
+    setValues(event.target.value);
   }
 
   const handleGenerateQRCode = () => {
-    setError('');
-    generateQRCode(userData);
+      fetch(`http://omonullo.uz:8006/api/${values}`).then(res => res.json()).then(data => setQRCodeSrc(data))
   }
-
   return (
     <div className="instruments-container">
       <input
         type="text"
-        value={userData}
+        value={values}
         onChange={handleInputChange}
         className="user-input"
         placeholder="Enter text for QR code"
@@ -44,8 +25,7 @@ const Instruments = () => {
         Generate QR Code
       </button>
       <div className="qr-code-container">
-        {error && <p className="error-message">{error}</p>}
-        {qrCodeURL && <img src={qrCodeURL} alt="QR Code" className="qr-code-img" />}
+      <img src={qrCodeSrc ? qrCodeSrc : ''}  className="qr-code-img" />
       </div>
     </div>
   );
