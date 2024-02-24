@@ -14,6 +14,7 @@
 /* Input field styling */
 .user-input {
   width: 390px;
+  height: 100px;
   outline: none;
   padding: 5px;
   margin-bottom: 10px;
