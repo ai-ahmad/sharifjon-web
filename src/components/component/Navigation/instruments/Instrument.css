@@ -11,6 +11,17 @@
   background-color: #f9f9f9;
 }
 
+
+.user-input1 {
+  width: 390px;
+  outline: none;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
 /* Input field styling */
 .user-input {
   width: 390px;
