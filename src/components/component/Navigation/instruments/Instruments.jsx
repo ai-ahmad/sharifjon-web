@@ -1,48 +1,51 @@
 import React, { useState } from 'react';
 import './Instrument.css'; // Import CSS file
+import axios from 'axios';
 
 const Instruments = () => {
-  const [values, setValues] = useState('');
   const [qrCodeSrc, setQRCodeSrc] = useState('');
-  const [url,setUrl] = useState('')
-  const [text,setText] = useState('')
+  const [url, setUrl] = useState('');
+  const [data, setData] = useState({
+    text_prompt: '',
+    qr_code_data: ''
+  });
 
   const handleInputChange = (event) => {
-    setValues(event.target.value);
+    setData({ ...data, text_prompt: event.target.value });
   }
 
   const handleInputChange2 = (event) => {
-    setText(event.target.value);
+    setData({ ...data, qr_code_data: event.target.value });
   }
 
   const handleGenerateQRCode = () => {
-      fetch(`http://omonullo.uz:8006/api/${values}`).then(res => res.json()).then(data => {
-        setQRCodeSrc(data)
-      })
-
-      fetch(`http://omonullo.uz:8006/text/${text}`).then(res => res.json()).then(data => {
-        setUrl(data)
-      })
+    axios.post('http://omonullo.uz:8006/qr', data)
+  .then(response => {
+    setQRCodeSrc(response.data['qr_code_data']);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
   }
+
   return (
     <div className="instruments-container">
       <textarea
         type="text"
-        value={values}
+        value={data.text_prompt}
         onChange={handleInputChange}
         className="user-input"
         placeholder="Enter text for QR code"
       />
       <input
         type="text"
-        value={text}
+        value={data.qr_code_data}
         onChange={handleInputChange2}
         className="user-input1"
-        placeholder="Enter url brauser for QR code"
+        placeholder="Enter URL for QR code"
       />
       <div className="qr-code-container">
-      <img src={qrCodeSrc ? qrCodeSrc : ''}  className="qr-code-img" />
-      <p className='text_qr_code'>{url}</p>
+        {qrCodeSrc && <img src={qrCodeSrc} alt="QR Code" className="qr-code-img" />}
       </div>
       <button onClick={handleGenerateQRCode} className="generate-btn">
         Generate QR Code
